@@ -16,7 +16,8 @@ cities = ["miami", "barcelona", "madrid"]
 #  sum + city
 # end
 
-# puts total
+# average = total / cities.length
+# puts average
 
 cities.each_with_index do | city, index |
 	puts "#{index + 1}: #{city}"
