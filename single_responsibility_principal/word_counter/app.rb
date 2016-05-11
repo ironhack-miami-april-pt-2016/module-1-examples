@@ -1,6 +1,7 @@
 # app.rb
 require_relative("lib/authenticator.rb")
 require_relative("lib/word_counter")
+require_relative("lib/counter_picker")
 
 auth = Authenticator.new("Josh", "swordfish")
 
@@ -12,10 +13,14 @@ password_input = gets.chomp
 
 if auth.authenticate?(name_input, password_input)
 	puts "Welcome back, #{name_input}"
- 	puts "Enter a sentence and I'll count the words"
+	puts "Enter a sentence"
  	sentence_input = gets.chomp
  	my_counter = WordCounter.new(sentence_input)
- 	puts "The number of words in your sentence was #{my_counter.count_words}"
+
+ 	puts "Enter an operation: \ncount words |\n count letters |\n reverse |\n upcase |\n downcase"
+ 	operation = gets.chomp
+ 	counter_picker = CounterPicker.new(operation, my_counter)
+ 	counter_picker.perform_operation
 else
 	puts "Go away, #{name_input}. No word counter for you"
 end
