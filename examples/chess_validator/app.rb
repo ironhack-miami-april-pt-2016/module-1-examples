@@ -1,14 +1,115 @@
-require_relative('lib/piece')
-require_relative('lib/rook')
+require_relative('lib/movements/horizontal_movement')
+require_relative('lib/movements/vertical_movement')
+require_relative('lib/movements/diagonal_movement')
+require_relative('lib/movements/l_shaped')
+require_relative('lib/pieces/piece')
+require_relative('lib/pieces/rook')
+require_relative('lib/pieces/bishop')
+require_relative('lib/pieces/pawn')
+require_relative('lib/pieces/black_pawn')
+require_relative('lib/pieces/white_pawn')
+require_relative('lib/pieces/king')
+require_relative('lib/pieces/queen')
+require_relative('lib/pieces/knight')
+require_relative('lib/validators/validator')
+require_relative('lib/board/board')
+
 
 # Rook Tests
-white_rook = Rook.new(1, 1)
-puts "Good Rook Moves"
-puts white_rook.can_move?(1, 5)
-puts white_rook.can_move?(5, 1)
-puts "Bad Rook Moves"
-puts white_rook.can_move?(5, 3)
+rook = Rook.new(1, 8)
+p "Rook Good"
+p rook.can_move?(2, 8)
+p rook.can_move?(6, 8)
+p "Rook Bad"
+p rook.can_move?(7, 3)
 
+puts " "
 # Bishop Tests
+bishop = Bishop.new(3, 8)
+p "Bishop Good"
+p bishop.can_move?(2, 7)
+p bishop.can_move?(1, 6)
+p "Bishop Bad"
+p bishop.can_move?(2, 5)
+puts " "
 
 # Queen Tests
+q = Queen.new(4, 8)
+p "Queen Good"
+p q.can_move?(6, 8)
+p q.can_move?(4, 6)
+p q.can_move?(3, 7)
+p "Queen Bad"
+p q.can_move?(2, 7)
+puts ""
+
+# King Tests
+k = King.new(1, 1)
+p "King Good"
+p k.can_move?(1, 2)
+p k.can_move?(2, 1)
+p k.can_move?(2, 2)
+p "King Bad"
+p k.can_move?(1, 3)
+p k.can_move?(3, 1)
+p k.can_move?(3, 3)
+
+# Pawn Tests
+puts "Black Pawn Good"
+bp = BlackPawn.new(1, 4)
+p bp.can_move?(1, 2)
+p bp.can_move?(1, 3)
+puts "Black Pawn Bad"
+p bp.can_move?(1, 5)
+p bp.can_move?(2, 4)
+p bp.can_move?(1, 7)
+p bp.can_move?(1, 2)
+puts ""
+puts "White Pawn Good"
+wp = WhitePawn.new(1, 5)
+p wp.can_move?(1, 7)
+p wp.can_move?(1, 6)
+puts "White Pawn Bad"
+p wp.can_move?(1, 7)
+p wp.can_move?(1, 8)
+p wp.can_move?(2, 7)
+
+board = []
+9.times do 
+	board.push([])
+end
+
+board[1][8] = Rook.new(8, 1)
+board[1][1] = Rook.new(1, 1)
+board[8][1] = Rook.new(1, 8)
+board[8][8] = Rook.new(8, 8)
+
+board[1][7] = Knight.new(7, 1)
+board[1][2] = Knight.new(2, 1)
+board[8][7] = Knight.new(7, 8)
+board[8][2] = Knight.new(2, 8)
+
+board[1][6] = Bishop.new(6, 1)
+board[1][3] = Bishop.new(3, 1)
+board[8][6] = Bishop.new(6, 8)
+board[8][3] = Bishop.new(3, 8)
+
+board[1][4] = Queen.new(2, 1)
+board[8][4] = Queen.new(2, 8)
+
+board[1][5] = King.new(5, 1)
+board[8][5] = King.new(5, 8)
+
+8.times do | i | 
+	board[2][i + 1] = BlackPawn.new(i + 1, 2)
+end
+
+8.times do | i | 
+	board[7][i + 1] = WhitePawn.new(i + 1, 2)
+end
+
+# moves = IO.readlines('moves.txt')
+# my_board = Board.new(board)
+
+# validator = Validator.new(moves, my_board)
+# validator.run_validations
