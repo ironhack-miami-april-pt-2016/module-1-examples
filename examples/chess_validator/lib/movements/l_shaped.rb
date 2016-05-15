@@ -4,6 +4,6 @@ module LShaped
 		dy_abs = @dy.abs
 
 		(dx_abs == 2 && dy_abs == 1) ||
-		(dy_abs == 1 && dx_abs == 2)
+		(dy_abs == 2 && dx_abs == 1)
 	end
 end

@@ -73,6 +73,15 @@ puts "White Pawn Bad"
 p wp.can_move?(1, 7)
 p wp.can_move?(1, 8)
 p wp.can_move?(2, 7)
+puts ""
+# Knight Tests
+puts "Knight Good"
+kn = Knight.new(3, 4)
+p kn.can_move?(5, 5)
+p kn.can_move?(2, 6)
+p kn.can_move?(1, 5)
+p kn.can_move?(2, 2)
+p kn.can_move?(4, 2)
 
 board = []
 9.times do 
