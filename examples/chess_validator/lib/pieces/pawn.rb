@@ -12,8 +12,8 @@ class Pawn < Piece
 	include VerticalMovement
 	include DiagonalMovement
 
-	def initialize(starting_x, starting_y)
-		super(starting_x, starting_y)
+	def initialize(starting_x, starting_y, color)
+		super(starting_x, starting_y, color)
 		@has_moved = false
 	end
 

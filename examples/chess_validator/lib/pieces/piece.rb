@@ -1,7 +1,9 @@
 class Piece
-	def initialize(starting_x, starting_y)
-		@starting_x = starting_x
-		@starting_y = starting_y
+	attr_reader :color
+
+	def initialize(starting_x, starting_y, color)
+		@starting_x, @starting_y = starting_x, starting_y
+		@color = color
 	end
 
 	def can_move?(starting_x, starting_y)
@@ -12,10 +14,10 @@ class Piece
 	protected
 
 	def diff_x(end_x)
-		(@starting_x - end_x)
+		(end_x - @starting_x)
 	end
 
 	def diff_y(end_y)
-		(@starting_y - end_y)
+		(end_y - @starting_y)
 	end
 end
